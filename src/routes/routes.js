@@ -7,5 +7,6 @@ router.get("/getProductById/:id" , getProductById);
 router.post("/products" , createProduct);
 router.delete("/deleteProduct/:id" , deleteProduct)
 router.put("/updateProducts/:id" , updateProduct)
+router.get("/" , (req , res )=> { res.send("Hello Worldd!") })
 
 export default router;

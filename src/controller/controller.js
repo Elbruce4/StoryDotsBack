@@ -1,7 +1,14 @@
 import { products } from "../models/Products.js"
+//COMMENTED FILES ARE ATTEMPS TO MAKE PRISMA ORM WORKS FOR A GOOD DEPLOY
+/* import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient()
+import * as dotenv from 'dotenv'
+dotenv.config() */
 
 export const getProducts = async (req , res) => {
     try {
+        //prisma test
+        /* const test = await prisma.products; */
         let allProducts = await products.findAll();
         res.send(allProducts);
     } catch (error) {
@@ -34,13 +41,23 @@ export const createProduct = async (req , res) => {
         
         const {name , description , image , price} = req.body;
     
+        //ATTEMP TO MAKE PRISMA NEW PRODUCT
+/*         const newProduct = await prisma.products.create({
+            data : {
+                name,
+                description,
+                image,
+                price
+            }
+        }) */
+        
         const newProduct = await products.create({
             name , description , image , price
         });
-    
+
         console.log(newProduct);
-    
-        res.send("Create products")
+
+        res.send("Product created");
 
     } catch (error) {
         return res.status(400).json({message : error.message});

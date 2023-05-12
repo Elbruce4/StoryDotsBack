@@ -1,10 +1,10 @@
 import express from "express"
 const app = express();
-import {sequelize} from "./db.js"
 import "./models/Products.js"
 import proyectRoutes from "./routes/routes.js"
 import * as dotenv from 'dotenv'
 dotenv.config()
+import {sequelize} from "./db.js"
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
